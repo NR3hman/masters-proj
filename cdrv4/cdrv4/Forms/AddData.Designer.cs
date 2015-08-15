@@ -35,6 +35,7 @@
             this.txb_selectedFile = new System.Windows.Forms.TextBox();
             this.txb_CaseName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_Exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,12 +107,25 @@
             this.dataGridView1.Size = new System.Drawing.Size(710, 252);
             this.dataGridView1.TabIndex = 6;
             // 
+            // btn_Exit
+            // 
+            this.btn_Exit.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Exit.Location = new System.Drawing.Point(714, 401);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(100, 40);
+            this.btn_Exit.TabIndex = 7;
+            this.btn_Exit.Text = "Exit";
+            this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
             // form_AddData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(843, 461);
+            this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txb_CaseName);
             this.Controls.Add(this.txb_selectedFile);
@@ -136,6 +150,7 @@
         private System.Windows.Forms.TextBox txb_selectedFile;
         private System.Windows.Forms.TextBox txb_CaseName;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_Exit;
     }
 }
 

@@ -76,12 +76,25 @@ namespace cdrv4
         {
             if (dataGridView1.Rows.Count==0)
             {
-                MessageBox.Show("Parse first");
+                MessageBox.Show("Parse first and check data before saving");
             }
             else
             {
-                MessageBox.Show("Success!");
+                saveCSV();
             }
+        }
+
+        private void saveCSV()
+        {
+            using (var db = new cdrv4.Database.cdrdbContainer())
+            {
+                MessageBox.Show("This works");
+            }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
