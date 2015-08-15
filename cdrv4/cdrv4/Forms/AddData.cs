@@ -52,7 +52,6 @@ namespace cdrv4
 
             dataset.Tables.Add(tableName);
             dataset.Tables[tableName].Columns.Add("LineID");
-            dataset.Tables[tableName].Columns.Add("CaseName");
             dataset.Tables[tableName].Columns.Add("DateofCall");
             dataset.Tables[tableName].Columns.Add("TimeofCall");
             dataset.Tables[tableName].Columns.Add("TypeofCall");
@@ -80,16 +79,27 @@ namespace cdrv4
             }
             else
             {
-                saveCSV();
+                createTable();
             }
         }
 
-        private void saveCSV()
+        private void createTable()
         {
             using (var db = new cdrv4.Database.cdrdbContainer())
             {
-                MessageBox.Show("This works");
+                string table = txb_CaseName.Text;
+                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL);");
+                db.SaveChanges();
+                MessageBox.Show("Table created in database, the table name is: " +table);
+                copyCSV();
             }
+   
+        }
+
+        private void copyCSV()
+        {
+            var db = new cdrv4.Database.cdrdbContainer();
+            
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)

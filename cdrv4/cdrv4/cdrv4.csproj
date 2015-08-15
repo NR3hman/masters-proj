@@ -77,6 +77,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cdrdb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Database\test1.cs">
+      <DependentUpon>cdrdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddData.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -26,5 +26,6 @@ namespace cdrv4.Database
         }
     
         public virtual DbSet<Case> Cases { get; set; }
+        public virtual DbSet<test1> test1 { get; set; }
     }
 }
