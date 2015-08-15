@@ -48,7 +48,8 @@ namespace cdrv4
             string fileName = txb_selectedFile.Text;
 
             var dataset = new DataSet();
-            var sr = new StreamReader(fileName);
+            using (var sr = new StreamReader(fileName))
+            {
 
             dataset.Tables.Add(tableName);
             dataset.Tables[tableName].Columns.Add("LineID");
@@ -68,7 +69,10 @@ namespace cdrv4
                 dataset.Tables[tableName].Rows.Add(items);
             }
 
-            this.dataGridView1.DataSource = dataset.Tables[0].DefaultView;
+            this.dataGridView1.DataSource = dataset.Tables[tableName].DefaultView;
+            }
+
+            
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -98,7 +102,21 @@ namespace cdrv4
 
         private void copyCSV()
         {
-            var db = new cdrv4.Database.cdrdbContainer();
+            
+            //using (var db = new cdrv4.Database.cdrdbContainer())
+            //{
+            //    SqlBulkCopy sbc = new SqlBulkCopy(db);
+            //    sbc.DestinationTableName = txb_CaseName.Text;
+
+            //    sbc.ColumnMappings.Add("LineId", "LineId");
+            //    sbc.ColumnMappings.Add("DateofCall", "DateofCall");
+            //    sbc.ColumnMappings.Add("TimeofCall", "TimeofCall");
+            //    sbc.ColumnMappings.Add("TypeofCall", "TypeofCall");
+            //    sbc.ColumnMappings.Add("CallingNumber", "CallingNumber");
+            //    sbc.ColumnMappings.Add("CalledNumber", "CalledNumber");
+       
+
+            //}
             
         }
 
