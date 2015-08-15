@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace cdrv4
 {
-    public partial class Form1 : Form
+    public partial class form_AddData : Form
     {
-        public Form1()
+        public form_AddData()
         {
             InitializeComponent();
         }

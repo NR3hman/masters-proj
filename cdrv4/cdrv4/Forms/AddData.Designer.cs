@@ -1,6 +1,6 @@
 ﻿namespace cdrv4
 {
-    partial class Form1
+    partial class form_AddData
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // form_AddData
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(712, 451);
+            this.Name = "form_AddData";
+            this.Text = "Add Data";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
