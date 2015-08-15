@@ -31,9 +31,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -43,6 +47,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Case.cs">
+      <DependentUpon>cdrdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\cdrdb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cdrdb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\cdrdb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cdrdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\cdrdb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cdrdb.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +97,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Database\cdrdb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>cdrdb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\cdrdb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>cdrdb.Context.cs</LastGenOutput>
+      <DependentUpon>cdrdb.edmx</DependentUpon>
+    </None>
+    <None Include="Database\cdrdb.edmx.diagram">
+      <DependentUpon>cdrdb.edmx</DependentUpon>
+    </None>
+    <None Include="Database\cdrdb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>cdrdb.cs</LastGenOutput>
+      <DependentUpon>cdrdb.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\cdrdb.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

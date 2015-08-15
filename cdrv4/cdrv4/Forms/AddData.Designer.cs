@@ -48,26 +48,31 @@
             this.btn_SelectFile.TabIndex = 0;
             this.btn_SelectFile.Text = "Select File:";
             this.btn_SelectFile.UseVisualStyleBackColor = false;
+            this.btn_SelectFile.Click += new System.EventHandler(this.btn_SelectFile_Click);
             // 
             // btn_Parse
             // 
             this.btn_Parse.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Parse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Parse.Location = new System.Drawing.Point(47, 401);
             this.btn_Parse.Name = "btn_Parse";
-            this.btn_Parse.Size = new System.Drawing.Size(100, 26);
+            this.btn_Parse.Size = new System.Drawing.Size(100, 40);
             this.btn_Parse.TabIndex = 1;
             this.btn_Parse.Text = "Parse";
             this.btn_Parse.UseVisualStyleBackColor = false;
+            this.btn_Parse.Click += new System.EventHandler(this.btn_Parse_Click);
             // 
             // btn_Save
             // 
             this.btn_Save.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Location = new System.Drawing.Point(180, 401);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(100, 26);
+            this.btn_Save.Size = new System.Drawing.Size(100, 40);
             this.btn_Save.TabIndex = 2;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // label1
             // 
