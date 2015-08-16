@@ -36,6 +36,7 @@
             this.txb_CaseName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_Exit = new System.Windows.Forms.Button();
+            this.btn_Next = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,12 +120,25 @@
             this.btn_Exit.UseVisualStyleBackColor = false;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
+            // btn_Next
+            // 
+            this.btn_Next.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Next.Location = new System.Drawing.Point(307, 401);
+            this.btn_Next.Name = "btn_Next";
+            this.btn_Next.Size = new System.Drawing.Size(100, 40);
+            this.btn_Next.TabIndex = 8;
+            this.btn_Next.Text = "Next";
+            this.btn_Next.UseVisualStyleBackColor = false;
+            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            // 
             // form_AddData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(843, 461);
+            this.Controls.Add(this.btn_Next);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txb_CaseName);
@@ -151,6 +165,7 @@
         private System.Windows.Forms.TextBox txb_CaseName;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_Exit;
+        private System.Windows.Forms.Button btn_Next;
     }
 }
 
