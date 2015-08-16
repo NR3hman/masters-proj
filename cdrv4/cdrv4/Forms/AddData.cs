@@ -58,6 +58,9 @@ namespace cdrv4
             datatable.Columns.Add("TypeofCall");
             datatable.Columns.Add("CallingNumber");
             datatable.Columns.Add("CalledNumber");
+            datatable.Columns.Add("CallingIMEI");
+            datatable.Columns.Add("CalledIMEI");
+            datatable.Columns.Add("Duration");
 
             string allData = sr.ReadToEnd();
             string[] rows = allData.Split('\r');
@@ -93,7 +96,7 @@ namespace cdrv4
             using (var db = new cdrv4.Database.cdrdbContainer())
             {
                 string table = txb_CaseName.Text;
-                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL);");
+                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL, [CallingIMEI] VARCHAR(20) NULL, [CalledIMEI] VARCHAR(20) NULL,[Duration] TIME NULL),[DateTime] INT NULL;");
                 db.SaveChanges();
                 MessageBox.Show("Table created in database, the table name is: " + table);
                 copyCSV();
@@ -117,6 +120,9 @@ namespace cdrv4
                         sbc.ColumnMappings.Add("TypeofCall", "TypeofCall");
                         sbc.ColumnMappings.Add("CallingNumber", "CallingNumber");
                         sbc.ColumnMappings.Add("CalledNumber", "CalledNumber");
+                        sbc.ColumnMappings.Add("CallingIMEI", "CallingIMEI");
+                        sbc.ColumnMappings.Add("CalledIMEI", "CalledIMEI");
+                        //sbc.ColumnMappings.Add("Duration", "Duration");
                         sbc.BatchSize = 10000;
                         sbc.DestinationTableName = txb_CaseName.Text;
                         sbc.WriteToServer(datatable);
