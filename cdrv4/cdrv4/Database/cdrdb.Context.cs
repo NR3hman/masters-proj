@@ -25,7 +25,6 @@ namespace cdrv4.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Case> Cases { get; set; }
-        public virtual DbSet<test1> test1 { get; set; }
+
     }
 }
