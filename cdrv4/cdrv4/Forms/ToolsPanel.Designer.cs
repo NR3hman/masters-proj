@@ -33,8 +33,9 @@
             this.btn_Exit = new System.Windows.Forms.Button();
             this.btn_CheckDuplicates = new System.Windows.Forms.Button();
             this.btn_MergeDuplicates = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView2_tp = new System.Windows.Forms.DataGridView();
+            this.btn_AcceptDuplicates = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2_tp)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_CaseName_tp
@@ -60,7 +61,7 @@
             // 
             this.btn_Exit.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(870, 401);
+            this.btn_Exit.Location = new System.Drawing.Point(870, 472);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(100, 40);
             this.btn_Exit.TabIndex = 8;
@@ -72,7 +73,7 @@
             // 
             this.btn_CheckDuplicates.BackColor = System.Drawing.Color.LightCoral;
             this.btn_CheckDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckDuplicates.Location = new System.Drawing.Point(796, 65);
+            this.btn_CheckDuplicates.Location = new System.Drawing.Point(16, 371);
             this.btn_CheckDuplicates.Name = "btn_CheckDuplicates";
             this.btn_CheckDuplicates.Size = new System.Drawing.Size(160, 36);
             this.btn_CheckDuplicates.TabIndex = 9;
@@ -84,28 +85,42 @@
             // 
             this.btn_MergeDuplicates.BackColor = System.Drawing.Color.LightCoral;
             this.btn_MergeDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_MergeDuplicates.Location = new System.Drawing.Point(796, 125);
+            this.btn_MergeDuplicates.Location = new System.Drawing.Point(16, 456);
             this.btn_MergeDuplicates.Name = "btn_MergeDuplicates";
             this.btn_MergeDuplicates.Size = new System.Drawing.Size(160, 36);
             this.btn_MergeDuplicates.TabIndex = 10;
             this.btn_MergeDuplicates.Text = "Merge duplicates";
             this.btn_MergeDuplicates.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridView2_tp
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(718, 283);
-            this.dataGridView1.TabIndex = 11;
+            this.dataGridView2_tp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2_tp.Location = new System.Drawing.Point(16, 65);
+            this.dataGridView2_tp.Name = "dataGridView2_tp";
+            this.dataGridView2_tp.Size = new System.Drawing.Size(954, 283);
+            this.dataGridView2_tp.TabIndex = 11;
+            this.dataGridView2_tp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btn_AcceptDuplicates
+            // 
+            this.btn_AcceptDuplicates.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_AcceptDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AcceptDuplicates.Location = new System.Drawing.Point(16, 414);
+            this.btn_AcceptDuplicates.Name = "btn_AcceptDuplicates";
+            this.btn_AcceptDuplicates.Size = new System.Drawing.Size(160, 36);
+            this.btn_AcceptDuplicates.TabIndex = 12;
+            this.btn_AcceptDuplicates.Text = "Accept duplicates";
+            this.btn_AcceptDuplicates.UseVisualStyleBackColor = false;
+            this.btn_AcceptDuplicates.Click += new System.EventHandler(this.btn_AcceptDuplicates_Click);
             // 
             // form_ToolsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(982, 453);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(982, 524);
+            this.Controls.Add(this.btn_AcceptDuplicates);
+            this.Controls.Add(this.dataGridView2_tp);
             this.Controls.Add(this.btn_MergeDuplicates);
             this.Controls.Add(this.btn_CheckDuplicates);
             this.Controls.Add(this.btn_Exit);
@@ -113,7 +128,8 @@
             this.Controls.Add(this.lb_CaseName_tp);
             this.Name = "form_ToolsPanel";
             this.Text = "ToolsPanel";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.form_ToolsPanel_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2_tp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +142,7 @@
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_CheckDuplicates;
         private System.Windows.Forms.Button btn_MergeDuplicates;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2_tp;
+        private System.Windows.Forms.Button btn_AcceptDuplicates;
     }
 }

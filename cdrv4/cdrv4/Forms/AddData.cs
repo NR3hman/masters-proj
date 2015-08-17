@@ -97,7 +97,7 @@ namespace cdrv4
             using (var db = new cdrv4.Database.cdrdbContainer())
             {
                 string table = txb_CaseName.Text;
-                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL, [CallingIMEI] VARCHAR(20) NULL, [CalledIMEI] VARCHAR(20) NULL,[Duration] TIME NULL,[DateTime] INT NULL);");
+                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL, [CallingIMEI] VARCHAR(20) NULL, [CalledIMEI] VARCHAR(20) NULL,[Duration] TIME NULL,[DateTime] VARCHAR(10) NULL, [IsDuplicate] INT NULL);");
                 db.SaveChanges();
                 MessageBox.Show("Table created in database, the table name is: " + table);
                 copyCSV();
@@ -124,6 +124,7 @@ namespace cdrv4
                         sbc.ColumnMappings.Add("CallingIMEI", "CallingIMEI");
                         sbc.ColumnMappings.Add("CalledIMEI", "CalledIMEI");
                         //sbc.ColumnMappings.Add("Duration", "Duration");
+                        sbc.ColumnMappings.Add("DateTime", "DateTime");
                         sbc.BatchSize = 10000;
                         sbc.DestinationTableName = txb_CaseName.Text;
                         sbc.WriteToServer(datatable);
