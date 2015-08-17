@@ -91,6 +91,7 @@
             this.btn_MergeDuplicates.TabIndex = 10;
             this.btn_MergeDuplicates.Text = "Merge duplicates";
             this.btn_MergeDuplicates.UseVisualStyleBackColor = false;
+            this.btn_MergeDuplicates.Click += new System.EventHandler(this.btn_MergeDuplicates_Click);
             // 
             // dataGridView2_tp
             // 

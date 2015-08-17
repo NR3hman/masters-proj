@@ -51,7 +51,13 @@ namespace cdrv4.Forms
                 string table = txb_caseName_tp.Text;
                 db.Database.ExecuteSqlCommand("Update [dbo].["+table+"] SET [IsDuplicate] = 1 WHERE [DateTime] IN (SELECT [DateTime] FROM [dbo].["+table+"] GROUP BY [DateTime] HAVING COUNT([DateTime])>1);");
                 btn_CheckDuplicates.PerformClick();
+                MessageBox.Show("Duplicates accepted");
             }
+        }
+
+        private void btn_MergeDuplicates_Click(object sender, EventArgs e)
+        {
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -62,6 +68,7 @@ namespace cdrv4.Forms
         {
 
         }
+
 
     }
 }
