@@ -87,7 +87,9 @@ namespace cdrv4.Forms
 
         private void btn_Mapping_Click(object sender, EventArgs e)
         {
-            
+            string cn = txb_caseName_tp.Text;
+            var tp = new cdrv4.Forms.Map(cn);
+            tp.ShowDialog();
         }
 
         

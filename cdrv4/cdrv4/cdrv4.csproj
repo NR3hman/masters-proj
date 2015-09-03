@@ -102,6 +102,12 @@
     <Compile Include="Forms\AddData.Designer.cs">
       <DependentUpon>AddData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Map.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Map.Designer.cs">
+      <DependentUpon>Map.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddData.resx">
       <DependentUpon>AddData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Map.resx">
+      <DependentUpon>Map.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsPanel.resx">
       <DependentUpon>ToolsPanel.cs</DependentUpon>
