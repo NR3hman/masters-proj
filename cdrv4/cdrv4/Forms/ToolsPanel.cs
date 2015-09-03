@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Google.Maps;
 
 namespace cdrv4.Forms
 {
@@ -57,7 +58,7 @@ namespace cdrv4.Forms
 
         private void btn_MergeDuplicates_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("To be completed");
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -68,6 +69,28 @@ namespace cdrv4.Forms
         {
 
         }
+
+        private void btn_ConvertNE_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To be completed");
+            //Console.WriteLine("enter easting:");
+            //double easting = Convert.ToDouble(Console.ReadLine());
+
+            //Console.WriteLine("enter northing:");
+            //double northing = Convert.ToDouble(Console.ReadLine());
+
+            ////NEConverter.ConvertOSToLatLon(easting, northing);
+
+            //Console.WriteLine(NEConverter.ConvertOSToLatLon(easting, northing));
+
+        }
+
+        private void btn_Mapping_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
 
 
     }

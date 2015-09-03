@@ -35,6 +35,8 @@
             this.btn_MergeDuplicates = new System.Windows.Forms.Button();
             this.dataGridView2_tp = new System.Windows.Forms.DataGridView();
             this.btn_AcceptDuplicates = new System.Windows.Forms.Button();
+            this.btn_ConvertNE = new System.Windows.Forms.Button();
+            this.btn_Mapping = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2_tp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,12 +116,38 @@
             this.btn_AcceptDuplicates.UseVisualStyleBackColor = false;
             this.btn_AcceptDuplicates.Click += new System.EventHandler(this.btn_AcceptDuplicates_Click);
             // 
+            // btn_ConvertNE
+            // 
+            this.btn_ConvertNE.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_ConvertNE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ConvertNE.Location = new System.Drawing.Point(211, 371);
+            this.btn_ConvertNE.Name = "btn_ConvertNE";
+            this.btn_ConvertNE.Size = new System.Drawing.Size(190, 36);
+            this.btn_ConvertNE.TabIndex = 13;
+            this.btn_ConvertNE.Text = "Convert to Lat and Long";
+            this.btn_ConvertNE.UseVisualStyleBackColor = false;
+            this.btn_ConvertNE.Click += new System.EventHandler(this.btn_ConvertNE_Click);
+            // 
+            // btn_Mapping
+            // 
+            this.btn_Mapping.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_Mapping.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Mapping.Location = new System.Drawing.Point(211, 414);
+            this.btn_Mapping.Name = "btn_Mapping";
+            this.btn_Mapping.Size = new System.Drawing.Size(190, 36);
+            this.btn_Mapping.TabIndex = 14;
+            this.btn_Mapping.Text = "Mapping";
+            this.btn_Mapping.UseVisualStyleBackColor = false;
+            this.btn_Mapping.Click += new System.EventHandler(this.btn_Mapping_Click);
+            // 
             // form_ToolsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(982, 524);
+            this.Controls.Add(this.btn_Mapping);
+            this.Controls.Add(this.btn_ConvertNE);
             this.Controls.Add(this.btn_AcceptDuplicates);
             this.Controls.Add(this.dataGridView2_tp);
             this.Controls.Add(this.btn_MergeDuplicates);
@@ -145,5 +173,7 @@
         private System.Windows.Forms.Button btn_MergeDuplicates;
         private System.Windows.Forms.DataGridView dataGridView2_tp;
         private System.Windows.Forms.Button btn_AcceptDuplicates;
+        private System.Windows.Forms.Button btn_ConvertNE;
+        private System.Windows.Forms.Button btn_Mapping;
     }
 }

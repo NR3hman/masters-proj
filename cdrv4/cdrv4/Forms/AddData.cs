@@ -52,19 +52,24 @@ namespace cdrv4
             using (var sr = new StreamReader(fileName))
             {
             
-            datatable.Columns.Add("LineID");
-            datatable.Columns.Add("DateofCall");
-            datatable.Columns.Add("TimeofCall");
-            datatable.Columns.Add("TypeofCall");
-            datatable.Columns.Add("CallingNumber");
-            datatable.Columns.Add("CalledNumber");
-            datatable.Columns.Add("CallingIMEI");
-            datatable.Columns.Add("CalledIMEI");
-            datatable.Columns.Add("Duration");
-            datatable.Columns.Add("DateTime");
-
-            string allData = sr.ReadToEnd();
-            string[] rows = allData.Split('\r');
+                datatable.Columns.Add("LineID");
+                datatable.Columns.Add("DateofCall");
+                datatable.Columns.Add("TimeofCall");
+                datatable.Columns.Add("TypeofCall");
+                datatable.Columns.Add("CallingNumber");
+                datatable.Columns.Add("CalledNumber");
+                datatable.Columns.Add("CallingIMEI");
+                datatable.Columns.Add("CalledIMEI");
+                datatable.Columns.Add("Duration");
+                datatable.Columns.Add("DateTime");
+                datatable.Columns.Add("FirstCellEasting");
+                datatable.Columns.Add("FirstCellNorthing");
+                datatable.Columns.Add("LastCellEasting");
+                datatable.Columns.Add("LastCellNorthing");
+                datatable.Columns.Add("FirstCellLatitude");
+                datatable.Columns.Add("FirstCellLongitude");
+                string allData = sr.ReadToEnd();
+                string[] rows = allData.Split('\r');
 
             for (var i = 1; i < rows.Length; i++)
             {
@@ -97,7 +102,7 @@ namespace cdrv4
             using (var db = new cdrv4.Database.cdrdbContainer())
             {
                 string table = txb_CaseName.Text;
-                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL, [CallingIMEI] VARCHAR(20) NULL, [CalledIMEI] VARCHAR(20) NULL,[Duration] TIME NULL,[DateTime] VARCHAR(10) NULL, [IsDuplicate] INT NULL);");
+                db.Database.ExecuteSqlCommand("CREATE TABLE [dbo].[" + table + "] ([LineId] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,[DateofCall] DATE NULL,[TimeofCall] TIME NULL,[TypeofCall] VARCHAR(70) NULL,[CallingNumber] VARCHAR(15) NULL,[CalledNumber] VARCHAR(15) NULL, [CallingIMEI] VARCHAR(20) NULL, [CalledIMEI] VARCHAR(20) NULL,[Duration] VARCHAR(30) NULL,[DateTime] VARCHAR(50) NULL, [IsDuplicate] INT NULL, [FirstCellEasting] VARCHAR(50) NULL, [FirstCellNorthing] VARCHAR(50) NULL, [LastCellEasting] VARCHAR(50) NULL, [LastCellNorthing] VARCHAR(50) NULL, [FirstCellLatitude] VARCHAR(50) NULL, [FirstCellLongitude] VARCHAR(50) NULL, [LastCellLatitude] VARCHAR(50) NULL, [LastCellLongitude] VARCHAR(50) NULL);");
                 db.SaveChanges();
                 MessageBox.Show("Table created in database, the table name is: " + table);
                 copyCSV();
@@ -123,9 +128,15 @@ namespace cdrv4
                         sbc.ColumnMappings.Add("CalledNumber", "CalledNumber");
                         sbc.ColumnMappings.Add("CallingIMEI", "CallingIMEI");
                         sbc.ColumnMappings.Add("CalledIMEI", "CalledIMEI");
-                        //sbc.ColumnMappings.Add("Duration", "Duration");
+                        sbc.ColumnMappings.Add("Duration", "Duration");
                         sbc.ColumnMappings.Add("DateTime", "DateTime");
-                        sbc.BatchSize = 10000;
+                        sbc.ColumnMappings.Add("FirstCellEasting", "FirstCellEasting");
+                        sbc.ColumnMappings.Add("FirstCellNorthing", "FirstCellNorthing");
+                        sbc.ColumnMappings.Add("LastCellEasting", "LastCellEasting");
+                        sbc.ColumnMappings.Add("LastCellNorthing", "LastCellNorthing");
+                        sbc.ColumnMappings.Add("FirstCellLatitude", "FirstCellLatitude");
+                        sbc.ColumnMappings.Add("FirstCellLongitude", "FirstCellLongitude");
+                        //sbc.BatchSize = 10000;
                         sbc.DestinationTableName = txb_CaseName.Text;
                         sbc.WriteToServer(datatable);
                     }
