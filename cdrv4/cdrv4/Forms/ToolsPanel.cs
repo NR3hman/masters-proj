@@ -72,16 +72,37 @@ namespace cdrv4.Forms
 
         private void btn_ConvertNE_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To be completed");
-            //Console.WriteLine("enter easting:");
-            //double easting = Convert.ToDouble(Console.ReadLine());
+            string table = txb_caseName_tp.Text;
+            var latlon = new DataTable();
+            using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"))
+            using (var sqlcmd = new SqlCommand("SELECT LineID, FirstCellEasting, FirstCellNorthing, FirstCellLatitude, FirstCellLongitude FROM [dbo].[" + table + "];", con))
+            using (var adapter = new SqlDataAdapter(sqlcmd))
+            {
+                con.Open();
+                adapter.Fill(latlon);
+                con.Close();
+            }
 
-            //Console.WriteLine("enter northing:");
-            //double northing = Convert.ToDouble(Console.ReadLine());
+            foreach (DataRow row in latlon.Rows)
+            {
+              
+                var firsteasting = row.ItemArray[1];
+                var firstnorthing = row.ItemArray[2];
+                if (firsteasting == null || firstnorthing == null) continue;
+                var feasting = Convert.ToDouble(firsteasting);
+                var fnorthing = Convert.ToDouble(firstnorthing);
+                var latLong = NEConverter.ConvertOSToLatLon(feasting, fnorthing);
+                row.ItemArray[3] = latLong.Latitude;
+                row.ItemArray[4] = latLong.Longitude;
+  
+                using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"));
+                using (var sqlcmd = new SqlCommand("UPDATE ", con)) ;
+                
 
-            ////NEConverter.ConvertOSToLatLon(easting, northing);
-
-            //Console.WriteLine(NEConverter.ConvertOSToLatLon(easting, northing));
+               
+                
+            }
+           
 
         }
 

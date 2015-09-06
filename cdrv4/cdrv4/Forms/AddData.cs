@@ -66,8 +66,8 @@ namespace cdrv4
                 datatable.Columns.Add("FirstCellNorthing");
                 datatable.Columns.Add("LastCellEasting");
                 datatable.Columns.Add("LastCellNorthing");
-                datatable.Columns.Add("FirstCellLatitude");
-                datatable.Columns.Add("FirstCellLongitude");
+                //datatable.Columns.Add("FirstCellLatitude");
+                //datatable.Columns.Add("FirstCellLongitude");
                 string allData = sr.ReadToEnd();
                 string[] rows = allData.Split('\r');
 

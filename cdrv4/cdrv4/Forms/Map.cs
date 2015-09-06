@@ -40,7 +40,7 @@ namespace cdrv4.Forms
         {
             string table = txb_caseName_m.Text;
             using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"))
-            using (var sqlcmd = new SqlCommand("SELECT FirstCellLatitude, FirstCellLongitude FROM [dbo].[" + table + "];", con))
+            using (var sqlcmd = new SqlCommand("SELECT FirstCellLatitude, FirstCellLongitude FROM [dbo].[" + table + "] WHERE FirstCellLatitude IS NOT NULL AND FirstCellLongitude IS NOT NULL;", con))
             using (var adapter = new SqlDataAdapter(sqlcmd))
             {
                 con.Open();
@@ -56,18 +56,19 @@ namespace cdrv4.Forms
             try
             {
                 var url = new StringBuilder();
-                url.Append("https://maps.googleapis.com/maps/api/staticmap?size=631x564&maptype=roadmap&");
-                int currentRow = 0;
-                foreach (dataGridView_LatLon row in Rows)
-                {
-                    foreach (dataGridView_LatLon columns in Columns)
-                    {
-                        url.Append("markers=color:blue%7C");
-                        url.Append(dataGridView_LatLon.Rows[currentRow].Cells[col].Value.ToString());
-                        currentRow++;
+                url.Append("https://maps.googleapis.com/maps/api/staticmap?size=631x564&maptype=roadmap&key=AIzaSyBaVyAY-MArqBZxggHjmI60nz33_hb9WkU");
 
-                    }
+                foreach (DataGridViewRow row in dataGridView_LatLon.Rows)
+                {
+                    var lat = row.Cells[0].Value;
+                    var lon = row.Cells[1].Value;
+                    if (lat == null || lon == null) continue;
+                    url.Append("&markers=color:blue%7C");
+                    url.Append(lat.ToString());
+                    url.Append(",");
+                    url.Append(lon.ToString());   
                 }
+
                 webBrowser1.Navigate(url.ToString());
 
             }
