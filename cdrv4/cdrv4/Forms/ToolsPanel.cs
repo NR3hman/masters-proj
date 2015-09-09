@@ -24,12 +24,13 @@ namespace cdrv4.Forms
         {
 
         }
-
+        /*This button exits the tools panel windows form */
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /*This code uses the SQL command to select the items in the table as shown in the case name, it selects all the items where the
+         * DateTime field equal each other*/
         private void btn_CheckDuplicates_Click(object sender, EventArgs e)
         {
             string table = txb_caseName_tp.Text;
@@ -44,7 +45,7 @@ namespace cdrv4.Forms
                 con.Close();
             } 
         }
-
+        /*This code uses the SQL command updates the IsDuplicate field to 1 where the DateTime fields are equal*/
         private void btn_AcceptDuplicates_Click(object sender, EventArgs e)
         {
             using (var db = new cdrv4.Database.cdrdbContainer())
@@ -55,7 +56,7 @@ namespace cdrv4.Forms
                 MessageBox.Show("Duplicates accepted");
             }
         }
-
+        /*This code deletes a duplicate item rather than merges them - The merging will be required in future work*/
         private void btn_MergeDuplicates_Click(object sender, EventArgs e)
         {
             using (var db = new cdrv4.Database.cdrdbContainer())
@@ -77,7 +78,8 @@ namespace cdrv4.Forms
         {
 
         }
-
+        /*This code selects the first cell, easting, northing, latitude and longitude and fills this in the datatable after running
+         this through the converter code*/
         private void btn_ConvertNE_Click(object sender, EventArgs e)
         {
             string table = txb_caseName_tp.Text;
@@ -113,14 +115,14 @@ namespace cdrv4.Forms
             MessageBox.Show("Success, please save the conversion");
             
         }
-
+        /*This code opens the mapping windows form and copies the case name to the mapping windows form */
         private void btn_Mapping_Click(object sender, EventArgs e)
         {
             string cn = txb_caseName_tp.Text;
             var tp = new cdrv4.Forms.Map(cn);
             tp.ShowDialog();
         }
-
+        /*This code updates the table with the new latitude and longitude fields listed in the datagridview */
         private void btn_SaveLatLong_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView2_tp.Rows)

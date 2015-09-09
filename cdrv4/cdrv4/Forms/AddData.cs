@@ -20,6 +20,7 @@ namespace cdrv4
             InitializeComponent();
         }
 
+        //This buttton opens up file explorer and allows the user to select the file.
         private void btn_SelectFile_Click(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
@@ -29,7 +30,7 @@ namespace cdrv4
                 txb_selectedFile.Text = openFileDialog.FileName;
             }
         }
-
+        //This displays a message to prompt the user to enter a case name to the file.
         private void btn_Parse_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txb_CaseName.Text) || string.IsNullOrEmpty(txb_selectedFile.Text))
@@ -42,6 +43,8 @@ namespace cdrv4
             }
         }
 
+        /*This code using streamreader to read through the CSV and add the data to a datatable called 'datatable' this is then displayed
+        in the data grid view */
         private void parseCsv()
         {
             string delimiter = ",";
@@ -82,7 +85,7 @@ namespace cdrv4
 
             
         }
-
+        /*This code prompts the user to parse the CSV before saving the data  */
         private void btn_Save_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count==0)
@@ -94,7 +97,7 @@ namespace cdrv4
                 createTable();
             }
         }
-
+        /*This code uses the SQL command to create the table using the case name entered by the user as the table name */
         private void createTable()
         {
             using (var db = new cdrv4.Database.cdrdbContainer())
@@ -107,7 +110,7 @@ namespace cdrv4
             }
             
         }
-
+        /*This code copies the data from the CSV into the table that has just been created */
         private void copyCSV()
         {
             using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"))
@@ -139,11 +142,13 @@ namespace cdrv4
             MessageBox.Show("CSV copied, please click next");
         }
 
+        /*This button exits the application */
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /* This code copies the case name from the text box in this windows form to the tools panel windows form*/
         private void btn_Next_Click(object sender, EventArgs e)
         {
             string casename = txb_CaseName.Text;

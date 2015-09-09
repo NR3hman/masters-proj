@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*This code has come from https://social.msdn.microsoft.com/Forums/en-US/2c5498bb-998b-4c05-a6af-36af9d051a3d/eastings-northings-conversion-to-latitude-longitude-in-c?forum=bingmapsservices
+ and from Anexsys Ltd. This code is the conversion algorithm used.*/
 namespace cdrv4
 {
     public class NEConverter

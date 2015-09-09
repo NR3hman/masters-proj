@@ -19,23 +19,17 @@ namespace cdrv4.Forms
             InitializeComponent();
             txb_caseName_m.Text = cn;
         }
-
+        /*This code exits the windows form */
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btn_ReturnToToolsPanel_Click(object sender, EventArgs e)
-        {
-            //var tp = new cdrv4.Forms.form_ToolsPanel();
-            //tp.Show();
         }
 
         private void txb_caseName_m_TextChanged(object sender, EventArgs e)
         {
 
         }
-
+        /* This code uses a sql command to select the first cell latitude and longitude values */
         private void btn_GetLatLon_Click(object sender, EventArgs e)
         {
             string table = txb_caseName_m.Text;
@@ -51,6 +45,8 @@ namespace cdrv4.Forms
             } 
         }
 
+        /*This uses string builder to add to the google maps api URL that uses static maps to plot the latitude and longitude
+         * values onto the map and then uses the URL to appear in the web browser on the right hand side of the window*/
         private void btn_Plot_Click(object sender, EventArgs e)
         {
             try

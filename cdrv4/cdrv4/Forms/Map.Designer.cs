@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.dataGridView_LatLon = new System.Windows.Forms.DataGridView();
-            this.btn_Exit = new System.Windows.Forms.Button();
+            this.btn_Plot = new System.Windows.Forms.Button();
+            this.btn_GetLatLon = new System.Windows.Forms.Button();
             this.txb_caseName_m = new System.Windows.Forms.TextBox();
             this.lb_CaseName_tp = new System.Windows.Forms.Label();
-            this.btn_ReturnToToolsPanel = new System.Windows.Forms.Button();
-            this.btn_GetLatLon = new System.Windows.Forms.Button();
-            this.btn_Plot = new System.Windows.Forms.Button();
+            this.btn_Exit = new System.Windows.Forms.Button();
+            this.dataGridView_LatLon = new System.Windows.Forms.DataGridView();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,7 +54,6 @@
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.splitContainer1.Panel1.Controls.Add(this.btn_Plot);
             this.splitContainer1.Panel1.Controls.Add(this.btn_GetLatLon);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_ReturnToToolsPanel);
             this.splitContainer1.Panel1.Controls.Add(this.txb_caseName_m);
             this.splitContainer1.Panel1.Controls.Add(this.lb_CaseName_tp);
             this.splitContainer1.Panel1.Controls.Add(this.btn_Exit);
@@ -68,34 +66,31 @@
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 0;
             // 
-            // webBrowser1
+            // btn_Plot
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(631, 564);
-            this.webBrowser1.TabIndex = 0;
+            this.btn_Plot.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Plot.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_Plot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Plot.Location = new System.Drawing.Point(13, 497);
+            this.btn_Plot.Name = "btn_Plot";
+            this.btn_Plot.Size = new System.Drawing.Size(154, 40);
+            this.btn_Plot.TabIndex = 14;
+            this.btn_Plot.Text = "Plot";
+            this.btn_Plot.UseVisualStyleBackColor = false;
+            this.btn_Plot.Click += new System.EventHandler(this.btn_Plot_Click);
             // 
-            // dataGridView_LatLon
+            // btn_GetLatLon
             // 
-            this.dataGridView_LatLon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_LatLon.Location = new System.Drawing.Point(13, 38);
-            this.dataGridView_LatLon.Name = "dataGridView_LatLon";
-            this.dataGridView_LatLon.Size = new System.Drawing.Size(250, 394);
-            this.dataGridView_LatLon.TabIndex = 0;
-            // 
-            // btn_Exit
-            // 
-            this.btn_Exit.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(214, 512);
-            this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(100, 40);
-            this.btn_Exit.TabIndex = 9;
-            this.btn_Exit.Text = "Exit";
-            this.btn_Exit.UseVisualStyleBackColor = false;
-            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            this.btn_GetLatLon.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_GetLatLon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_GetLatLon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GetLatLon.Location = new System.Drawing.Point(13, 451);
+            this.btn_GetLatLon.Name = "btn_GetLatLon";
+            this.btn_GetLatLon.Size = new System.Drawing.Size(154, 40);
+            this.btn_GetLatLon.TabIndex = 13;
+            this.btn_GetLatLon.Text = "Get Lat and Long";
+            this.btn_GetLatLon.UseVisualStyleBackColor = false;
+            this.btn_GetLatLon.Click += new System.EventHandler(this.btn_GetLatLon_Click);
             // 
             // txb_caseName_m
             // 
@@ -116,43 +111,34 @@
             this.lb_CaseName_tp.TabIndex = 10;
             this.lb_CaseName_tp.Text = "Case Name:";
             // 
-            // btn_ReturnToToolsPanel
+            // btn_Exit
             // 
-            this.btn_ReturnToToolsPanel.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_ReturnToToolsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ReturnToToolsPanel.Location = new System.Drawing.Point(214, 466);
-            this.btn_ReturnToToolsPanel.Name = "btn_ReturnToToolsPanel";
-            this.btn_ReturnToToolsPanel.Size = new System.Drawing.Size(100, 40);
-            this.btn_ReturnToToolsPanel.TabIndex = 12;
-            this.btn_ReturnToToolsPanel.Text = "Back";
-            this.btn_ReturnToToolsPanel.UseVisualStyleBackColor = false;
-            this.btn_ReturnToToolsPanel.Click += new System.EventHandler(this.btn_ReturnToToolsPanel_Click);
+            this.btn_Exit.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Exit.Location = new System.Drawing.Point(214, 512);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(100, 40);
+            this.btn_Exit.TabIndex = 9;
+            this.btn_Exit.Text = "Exit";
+            this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
-            // btn_GetLatLon
+            // dataGridView_LatLon
             // 
-            this.btn_GetLatLon.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_GetLatLon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btn_GetLatLon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_GetLatLon.Location = new System.Drawing.Point(13, 451);
-            this.btn_GetLatLon.Name = "btn_GetLatLon";
-            this.btn_GetLatLon.Size = new System.Drawing.Size(154, 40);
-            this.btn_GetLatLon.TabIndex = 13;
-            this.btn_GetLatLon.Text = "Get Lat and Long";
-            this.btn_GetLatLon.UseVisualStyleBackColor = false;
-            this.btn_GetLatLon.Click += new System.EventHandler(this.btn_GetLatLon_Click);
+            this.dataGridView_LatLon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LatLon.Location = new System.Drawing.Point(13, 38);
+            this.dataGridView_LatLon.Name = "dataGridView_LatLon";
+            this.dataGridView_LatLon.Size = new System.Drawing.Size(250, 394);
+            this.dataGridView_LatLon.TabIndex = 0;
             // 
-            // btn_Plot
+            // webBrowser1
             // 
-            this.btn_Plot.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_Plot.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btn_Plot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Plot.Location = new System.Drawing.Point(13, 497);
-            this.btn_Plot.Name = "btn_Plot";
-            this.btn_Plot.Size = new System.Drawing.Size(154, 40);
-            this.btn_Plot.TabIndex = 14;
-            this.btn_Plot.Text = "Plot";
-            this.btn_Plot.UseVisualStyleBackColor = false;
-            this.btn_Plot.Click += new System.EventHandler(this.btn_Plot_Click);
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(631, 564);
+            this.webBrowser1.TabIndex = 0;
             // 
             // Map
             // 
@@ -180,7 +166,6 @@
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.TextBox txb_caseName_m;
         private System.Windows.Forms.Label lb_CaseName_tp;
-        private System.Windows.Forms.Button btn_ReturnToToolsPanel;
         private System.Windows.Forms.Button btn_GetLatLon;
         private System.Windows.Forms.Button btn_Plot;
 
