@@ -66,8 +66,6 @@ namespace cdrv4
                 datatable.Columns.Add("FirstCellNorthing");
                 datatable.Columns.Add("LastCellEasting");
                 datatable.Columns.Add("LastCellNorthing");
-                //datatable.Columns.Add("FirstCellLatitude");
-                //datatable.Columns.Add("FirstCellLongitude");
                 string allData = sr.ReadToEnd();
                 string[] rows = allData.Split('\r');
 
@@ -134,9 +132,6 @@ namespace cdrv4
                         sbc.ColumnMappings.Add("FirstCellNorthing", "FirstCellNorthing");
                         sbc.ColumnMappings.Add("LastCellEasting", "LastCellEasting");
                         sbc.ColumnMappings.Add("LastCellNorthing", "LastCellNorthing");
-                        sbc.ColumnMappings.Add("FirstCellLatitude", "FirstCellLatitude");
-                        sbc.ColumnMappings.Add("FirstCellLongitude", "FirstCellLongitude");
-                        //sbc.BatchSize = 10000;
                         sbc.DestinationTableName = txb_CaseName.Text;
                         sbc.WriteToServer(datatable);
                     }

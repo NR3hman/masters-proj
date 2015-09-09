@@ -37,6 +37,7 @@
             this.btn_AcceptDuplicates = new System.Windows.Forms.Button();
             this.btn_ConvertNE = new System.Windows.Forms.Button();
             this.btn_Mapping = new System.Windows.Forms.Button();
+            this.btn_SaveLatLong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2_tp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             this.btn_MergeDuplicates.Name = "btn_MergeDuplicates";
             this.btn_MergeDuplicates.Size = new System.Drawing.Size(160, 36);
             this.btn_MergeDuplicates.TabIndex = 10;
-            this.btn_MergeDuplicates.Text = "Merge duplicates";
+            this.btn_MergeDuplicates.Text = "De-duplicate";
             this.btn_MergeDuplicates.UseVisualStyleBackColor = false;
             this.btn_MergeDuplicates.Click += new System.EventHandler(this.btn_MergeDuplicates_Click);
             // 
@@ -132,7 +133,7 @@
             // 
             this.btn_Mapping.BackColor = System.Drawing.Color.LightCoral;
             this.btn_Mapping.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Mapping.Location = new System.Drawing.Point(211, 414);
+            this.btn_Mapping.Location = new System.Drawing.Point(211, 456);
             this.btn_Mapping.Name = "btn_Mapping";
             this.btn_Mapping.Size = new System.Drawing.Size(190, 36);
             this.btn_Mapping.TabIndex = 14;
@@ -140,12 +141,25 @@
             this.btn_Mapping.UseVisualStyleBackColor = false;
             this.btn_Mapping.Click += new System.EventHandler(this.btn_Mapping_Click);
             // 
+            // btn_SaveLatLong
+            // 
+            this.btn_SaveLatLong.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_SaveLatLong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaveLatLong.Location = new System.Drawing.Point(211, 414);
+            this.btn_SaveLatLong.Name = "btn_SaveLatLong";
+            this.btn_SaveLatLong.Size = new System.Drawing.Size(190, 36);
+            this.btn_SaveLatLong.TabIndex = 15;
+            this.btn_SaveLatLong.Text = "Save Lat and Long";
+            this.btn_SaveLatLong.UseVisualStyleBackColor = false;
+            this.btn_SaveLatLong.Click += new System.EventHandler(this.btn_SaveLatLong_Click);
+            // 
             // form_ToolsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(982, 524);
+            this.Controls.Add(this.btn_SaveLatLong);
             this.Controls.Add(this.btn_Mapping);
             this.Controls.Add(this.btn_ConvertNE);
             this.Controls.Add(this.btn_AcceptDuplicates);
@@ -175,5 +189,6 @@
         private System.Windows.Forms.Button btn_AcceptDuplicates;
         private System.Windows.Forms.Button btn_ConvertNE;
         private System.Windows.Forms.Button btn_Mapping;
+        private System.Windows.Forms.Button btn_SaveLatLong;
     }
 }

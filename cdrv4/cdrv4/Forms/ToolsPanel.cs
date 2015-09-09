@@ -58,10 +58,18 @@ namespace cdrv4.Forms
 
         private void btn_MergeDuplicates_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To be completed");
+            using (var db = new cdrv4.Database.cdrdbContainer())
+            {
+                string table = txb_caseName_tp.Text;
+                db.Database.ExecuteSqlCommand("DELETE FROM [dbo].[" + table + "] WHERE IsDuplicate = 1 AND TypeofCall = 'Calls Forwarded';");
+                MessageBox.Show("De-duplicated");
+            }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+            
+            
 
         }
 
@@ -73,37 +81,37 @@ namespace cdrv4.Forms
         private void btn_ConvertNE_Click(object sender, EventArgs e)
         {
             string table = txb_caseName_tp.Text;
-            var latlon = new DataTable();
             using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"))
-            using (var sqlcmd = new SqlCommand("SELECT LineID, FirstCellEasting, FirstCellNorthing, FirstCellLatitude, FirstCellLongitude FROM [dbo].[" + table + "];", con))
+            using (var sqlcmd = new SqlCommand("SELECT LineID, FirstCellEasting, FirstCellNorthing, FirstCellLatitude, FirstCellLongitude FROM [dbo].[" + table + "] WHERE FirstCellNorthing != 'NULL' AND FirstCellEasting != 'NULL';", con))
             using (var adapter = new SqlDataAdapter(sqlcmd))
             {
                 con.Open();
+                var latlon = new DataTable();
                 adapter.Fill(latlon);
+                dataGridView2_tp.DataSource = latlon;
                 con.Close();
             }
 
-            foreach (DataRow row in latlon.Rows)
+            foreach (DataGridViewRow row in dataGridView2_tp.Rows)
             {
-              
-                var firsteasting = row.ItemArray[1];
-                var firstnorthing = row.ItemArray[2];
-                if (firsteasting == null || firstnorthing == null) continue;
-                var feasting = Convert.ToDouble(firsteasting);
-                var fnorthing = Convert.ToDouble(firstnorthing);
-                var latLong = NEConverter.ConvertOSToLatLon(feasting, fnorthing);
-                row.ItemArray[3] = latLong.Latitude;
-                row.ItemArray[4] = latLong.Longitude;
-  
-                using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"));
-                using (var sqlcmd = new SqlCommand("UPDATE ", con)) ;
                 
-
-               
-                
+                var firsteasting = Convert.ToDouble(row.Cells[1].Value);
+                var firstnorthing = Convert.ToDouble(row.Cells[2].Value);
+                //var lasteasting = Convert.ToDouble(row.Cells[5].Value);
+                //var lastnorthing = Convert.ToDouble(row.Cells[6].Value);
+                if (row.IsNewRow) continue;
+               // if (firsteasting == null || firstnorthing == null || lastnorthing == null || lasteasting == null) continue;
+                var firstconvert = NEConverter.ConvertOSToLatLon(firsteasting, firstnorthing);
+                //var lastconvert = NEConverter.ConvertOSToLatLon(lasteasting, lastnorthing);
+                row.Cells[3].Value = firstconvert.Latitude;
+                row.Cells[4].Value = firstconvert.Longitude;
+                //row.Cells[7].Value = lastconvert.Latitude;
+                //row.Cells[8].Value = lastconvert.Longitude;
+     
             }
-           
 
+            MessageBox.Show("Success, please save the conversion");
+            
         }
 
         private void btn_Mapping_Click(object sender, EventArgs e)
@@ -111,6 +119,23 @@ namespace cdrv4.Forms
             string cn = txb_caseName_tp.Text;
             var tp = new cdrv4.Forms.Map(cn);
             tp.ShowDialog();
+        }
+
+        private void btn_SaveLatLong_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView2_tp.Rows)
+            {   
+                string table = txb_caseName_tp.Text;
+                using (var con = new SqlConnection(@"Data Source=(localdb)\v11.0;Initial Catalog=cdrdbv1;Integrated Security=True"))
+                using (var sqlcmd = new SqlCommand("UPDATE [dbo].[" + table + "] SET FirstCellLatitude='" + row.Cells[3].Value + "', FirstCellLongitude='" + row.Cells[4].Value + "' WHERE LineId ='" + row.Cells[0].Value + "';", con))
+
+            {
+                con.Open();
+                sqlcmd.ExecuteNonQuery();
+                con.Close();
+            }
+            }
+            MessageBox.Show("Conversion saved for first cell easting and first cell northing");
         }
 
         
